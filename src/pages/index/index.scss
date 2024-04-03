@@ -1,0 +1,10 @@
+.index-view {
+    .bigview {
+        box-shadow: 0 0 14px 5px #767676;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: rgb(71 70 70) 0px 0px 17px 8px;
+        }
+    }
+}
