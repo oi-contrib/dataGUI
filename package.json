@@ -1,7 +1,7 @@
 {
   "name": "datagui",
   "version": "0.0.0",
-  "description": "一个基于VISLite开发的数据可视化用例项目",
+  "description": "一个基于VISLite开发的数据可视化用例项目，包含可视化大屏、图表、小游戏和一些有趣的创意～",
   "scripts": {
     "dev": "webpack server --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js"
@@ -40,13 +40,13 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.76.1",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "zdebug.js": "^0.3.0-alpha.1"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.4",
-    "redux": "^4.2.1",
-    "vislite": "^1.0.0-next.1"
+    "vislite": "^1.0.0-next.8"
   }
 }

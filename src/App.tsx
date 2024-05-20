@@ -4,66 +4,56 @@ import LazyComponent from './components/lazy-component'
 
 import './styles/App.scss'
 
-import store from './stores/index'
-import dialogs from './dialogs/lazy-load'
-
 // 引入页面
 let Index = LazyComponent(() => import('./pages/index/index'))
 let Bigview = LazyComponent(() => import('./pages/bigview/index'))
+let ManualUnlocking = LazyComponent(() => import('./pages/manual-unlocking/index'))
+let Ring3D = LazyComponent(() => import('./pages/ring3d/index'))
+let H2O = LazyComponent(() => import('./pages/h2o/index'))
 
 const App: React.FC = (): JSX.Element => {
   const routing = useRoutes([
     {
       path: "/bigview",
       element: <Bigview />
-    },
-    {
+    }, {
+      path: "/manual-unlocking",
+      element: <ManualUnlocking />
+    }, {
+      path: "/ring3d",
+      element: <Ring3D />
+    }, {
+      path: "/h2o",
+      element: <H2O />
+    }, {
       path: "/",
       element: <Index />
     }
   ])
 
-  class UiDialog extends React.Component {
-    constructor(props: any) {
-      super(props)
+  return (<>
 
-      this.state = {
-        pages: []
-      }
-
-      // 监听store改变
-      store.subscribe(() => {
-        this.setState({
-          pages: store.getState()["dialogInstance"]
-        })
-
-      })
-    }
-
-    render() {
-      return (<div className="dialog-view">
-        {/* 统一遮罩 */}
-        <div className="mask"></div>
-        {
-          (this.state as any).pages.map((item: any, index: any) => <div key={index}>{(() => {
-            let NyDialog = (dialogs as any)[item.id]
-
-            return (<NyDialog data={item.data}></NyDialog>)
-          })()}</div>)
-        }</div>)
-    }
-  }
-
-  return <>
-
-    {/* 主体内容 */}
+    {/* 内容 */}
     <div className="main-view">
       {routing}
     </div>
 
-    {/* 弹框 */}
-    <UiDialog></UiDialog>
-  </>
+    {/* 源码 */}
+    <a target='_blank' href='https://github.com/oi-contrib/dataGUI' title='查看源码' style={{
+      position: "fixed",
+      right: "20px",
+      bottom: "20px",
+      width: "50px",
+      height: "50px",
+      backgroundImage: "url('./logo.png')",
+      backgroundSize: "90% auto",
+      backgroundColor: "white",
+      borderRadius: "50%",
+      backgroundPosition: "center center",
+      boxShadow: "0 0 5px 3px #607D8B"
+    }}></a>
+
+  </>)
 }
 
 export default App

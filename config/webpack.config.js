@@ -20,6 +20,9 @@ module.exports = {
                     }, {
                         test: /\.(scss|css)$/,
                         use: ['style-loader', 'css-loader', 'sass-loader']
+                    }, {
+                        test: /\.c$/,
+                        loader: './config/shader-loader.js'
                     }
                 ],
             },

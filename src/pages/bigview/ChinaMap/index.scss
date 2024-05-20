@@ -1,0 +1,96 @@
+.china-map {
+    canvas {
+        position: relative;
+        z-index: 1;
+    }
+
+    .map_tips {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        padding: 20px 50px;
+        box-sizing: border-box;
+        z-index: 2;
+
+        &.left_top {
+            top: 10px;
+        }
+
+        &.right_bottom {
+            bottom: 10px;
+            text-align: right;
+        }
+
+        &>.title {
+            color: white;
+            font-size: 30px;
+            padding: 10px 0;
+            font-weight: 800;
+        }
+
+        &>.value {
+            color: #e1ba2e;
+            font-size: 0;
+
+            &>span {
+                font-size: 36px;
+                margin-left: 5px;
+            }
+
+            &>.item {
+                border: 2px solid #3F51B5;
+                background-color: black;
+                display: inline-block;
+                text-align: center;
+                line-height: 40px;
+                width: 34px;
+            }
+        }
+    }
+
+    /* 旋转 */
+    @keyframes rotateView {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* 球 */
+    .global-view {
+        width: 600px;
+        height: 600px;
+        position: absolute;
+        left: calc(50% - 300px);
+        top: calc(50% - 300px);
+        background-image: url("../images/global-circle.png");
+        background-size: 100% auto;
+
+        &>div {
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            background-size: 100% auto;
+        }
+
+        .global-rt {
+            background-image: url("../images/global-rt.png");
+            animation-duration: 15s;
+            animation-iteration-count: infinite;
+            animation-name: rotateView;
+            animation-timing-function: linear;
+            animation-direction: reverse;
+        }
+
+        .global-line {
+            background-image: url("../images/global-line.png");
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-name: rotateView;
+            animation-timing-function: linear;
+        }
+    }
+}

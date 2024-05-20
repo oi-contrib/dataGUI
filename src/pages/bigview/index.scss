@@ -38,6 +38,16 @@
             width: 22%;
             height: 30%;
             background-color: rgb(146 199 225 / 9%);
+
+            &>.sub-title {
+                position: absolute;
+                background-color: #607d8b38;
+                width: 100%;
+                line-height: 30px;
+                padding-left: 10px;
+                color: white;
+                font-size: 20px;
+            }
         }
     }
 }
