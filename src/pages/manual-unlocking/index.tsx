@@ -3,7 +3,7 @@ import React from 'react'
 import type CanvasType from 'vislite/types/Canvas'
 import { Canvas } from "vislite"
 
-import isMobile from "../../tools/isMobile"
+// import isMobile from "../../tools/isMobile"
 import offsetValue from "../../tools/offsetValue"
 
 class ManualUnlocking extends React.Component {
@@ -111,33 +111,35 @@ class ManualUnlocking extends React.Component {
             if (values.length > 0)
                 setTimeout(() => {
                     alert("解锁密码：" + values.join("-"))
+
+                    this.updateView(painter, [])
                 }, 50)
         }
 
-        if (isMobile) {
+        // if (isMobile) {
 
-            this.refContent.current.addEventListener("touchstart", (event: MouseEvent) => {
-                doMousedown(...offsetValue(this.refContent.current, event))
-            }, false)
+        this.refContent.current.addEventListener("touchstart", (event: MouseEvent) => {
+            doMousedown(...offsetValue(this.refContent.current, event))
+        }, false)
 
 
-            this.refContent.current.addEventListener("touchmove", (event: MouseEvent) => {
-                doMousemove(...offsetValue(this.refContent.current, event))
-            }, false)
+        this.refContent.current.addEventListener("touchmove", (event: MouseEvent) => {
+            doMousemove(...offsetValue(this.refContent.current, event))
+        }, false)
 
-            this.refContent.current.addEventListener("touchend", doMouseup, false)
+        this.refContent.current.addEventListener("touchend", doMouseup, false)
 
-        } else {
-            this.refContent.current.addEventListener("mousedown", (event: MouseEvent) => {
-                doMousedown(...offsetValue(this.refContent.current, event))
-            }, false)
+        // } else {
+        this.refContent.current.addEventListener("mousedown", (event: MouseEvent) => {
+            doMousedown(...offsetValue(this.refContent.current, event))
+        }, false)
 
-            this.refContent.current.addEventListener("mousemove", (event: MouseEvent) => {
-                doMousemove(...offsetValue(this.refContent.current, event))
-            }, false)
+        this.refContent.current.addEventListener("mousemove", (event: MouseEvent) => {
+            doMousemove(...offsetValue(this.refContent.current, event))
+        }, false)
 
-            this.refContent.current.addEventListener("mouseup", doMouseup, false)
-        }
+        this.refContent.current.addEventListener("mouseup", doMouseup, false)
+        // }
     }
 
     updateView(painter: CanvasType, circles: Array<[number, number]>, endPoint?: [number, number]) {
